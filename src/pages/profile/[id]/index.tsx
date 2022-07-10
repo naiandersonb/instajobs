@@ -1,9 +1,8 @@
-import { Box, Heading } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import { LayoutTemplate } from '../../../src/templates/LayoutTemplate';
+import { Box, Heading } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { LayoutTemplate } from '../../../templates/LayoutTemplate';
 
 const Profile = () => {
-
   const route = useRouter();
   const { id } = route.query;
 
@@ -13,7 +12,7 @@ const Profile = () => {
         <Heading>Meu perfil {id}</Heading>
       </Box>
     </LayoutTemplate>
-  )
-}
+  );
+};
 
 export default Profile;

@@ -1,20 +1,24 @@
-import { Stack } from "@chakra-ui/react";
-import { ReactNode } from "react";
-import { theme } from '../../../styles/theme';
+import { Stack } from '@chakra-ui/react';
+import { ReactNode } from 'react';
+import { theme } from '../../styles/theme';
 
 type Props = {
   children: ReactNode;
-}
+};
 export const StoriesCarrousel = ({ children }: Props) => {
   return (
     <Stack
-      direction='row'
+      direction="row"
       spacing={4}
-      scrollBehavior='smooth'
-      overflowX='scroll'
+      // scrollBehavior='smooth'
+      // scrollSnapType='both'
+      // overflowX='scroll'
+      overflow="hidden"
       bg={theme.colors.brand.white}
+      borderRadius={10}
+      p={2}
     >
       {children}
     </Stack>
-  )
-}
+  );
+};

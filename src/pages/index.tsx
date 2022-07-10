@@ -1,8 +1,8 @@
 import { Box } from '@chakra-ui/react';
 import type { NextPage } from 'next';
-import HomePage from '../pages/Home';
-import { LayoutTemplate } from '../src/templates/LayoutTemplate';
 import { theme } from '../styles/theme';
+import { LayoutTemplate } from '../templates/LayoutTemplate';
+import HomePage from './Home';
 
 const Home: NextPage = () => {
   return (
