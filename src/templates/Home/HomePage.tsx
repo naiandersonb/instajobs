@@ -1,10 +1,13 @@
 import { Avatar, Box, Flex, Grid, GridItem } from '@chakra-ui/react';
-import { avatars, enterprises } from '../../../data/initialData';
+import NextLink from 'next/link';
+import { avatars, enterprises, posts } from '../../../data/initialData';
+import { PostCard } from '../../components/PostCard';
 import { Sidebar } from '../../components/Sidebar';
 import { StoriesCarrousel } from '../../components/StoriesCarrousel';
 import { theme } from '../../styles/theme';
 
 export const HomePage = () => {
+
   return (
     <Box maxW={1000} margin="auto" position="relative" px={4}>
       <Flex direction="row" gap={15}>
@@ -13,18 +16,35 @@ export const HomePage = () => {
             <StoriesCarrousel>
               <>
                 {avatars.map((item) => (
-                  <Avatar
+                  <Box
                     key={item.id}
-                    name={item.name}
-                    src={item.src}
-                    size="lg"
-                  />
+                    border={`2px solid ${theme.colors.brand.blue}`}
+                    borderRadius='50%'
+                    p={0.5}
+                  >
+                    <NextLink href={`/profile/${item.id}`} passHref>
+                      <Avatar
+                        name={item.name}
+                        src={item.avatar}
+                        size="lg"
+                        cursor='pointer'
+                      />
+                    </NextLink>
+                  </Box>
                 ))}
               </>
             </StoriesCarrousel>
           </GridItem>
 
-          <GridItem mt={5} title="posts" bg="tomato" minH="100vh"></GridItem>
+          <GridItem mt={5} title="posts" minH="100vh">
+            {posts.map(item => (
+              <PostCard
+                key={item.id}
+                data={item}
+              />
+            ))}
+          </GridItem>
+
         </Grid>
         <Box
           as="aside"

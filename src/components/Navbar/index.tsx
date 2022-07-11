@@ -11,7 +11,7 @@ import {
   Slide,
   Stack,
   useDisclosure,
-  useMediaQuery,
+  useMediaQuery
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -24,7 +24,7 @@ import {
   FiSearch,
   FiSettings,
   FiUser,
-  FiX,
+  FiX
 } from 'react-icons/fi';
 import { theme } from '../../styles/theme';
 import { SearchInput } from '../SearchInput';
@@ -111,7 +111,7 @@ export const Navbar = () => {
           </Button>
 
           <Menu>
-            <MenuButton position="relative">
+            <MenuButton position="relative" ml={5}>
               <Avatar
                 name="Dan Abrahmov"
                 src="https://bit.ly/dan-abramov"
