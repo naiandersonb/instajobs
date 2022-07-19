@@ -1,8 +1,9 @@
 import { Avatar, Badge, Box, Button, Flex, Heading, Image, Text } from "@chakra-ui/react";
 import NextLink from 'next/link';
 import { useState } from "react";
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaBookmark, FaRegBookmark } from 'react-icons/fa';
-import { FiFilePlus, FiHeart, FiSend } from 'react-icons/fi';
+import { FiFilePlus, FiSend } from 'react-icons/fi';
 import { theme } from "../../styles/theme";
 
 type Props = {
@@ -24,6 +25,7 @@ type Props = {
 export const PostCard = ({ data }: Props) => {
 
   const [saved, setSaved] = useState(false);
+  const [like, setLike] = useState(false);
   const [candidate, setCandidate] = useState(data.post.candidates < 2 ? 'cadidato' : 'candidatos');
 
   return (
@@ -53,8 +55,8 @@ export const PostCard = ({ data }: Props) => {
 
       <Flex alignItems='center' justifyContent='space-between'>
         <Flex alignItems='center' gap={0.5}>
-          <Button variant='ghost'>
-            <FiHeart size={24} />
+          <Button variant='ghost' onClick={() => setLike(!like)}>
+            {like ? <AiFillHeart size={28} color='tomato' /> : <AiOutlineHeart size={28} />}
           </Button>
           <Button variant='ghost'>
             <FiFilePlus size={24} />
@@ -84,7 +86,7 @@ export const PostCard = ({ data }: Props) => {
         </Flex>
 
         <Box>
-          <Badge colorScheme='blue'>
+          <Badge colorScheme={data.post.candidates ? 'blue' : 'orange'}>
             {!data.post.candidates && 'Ainda não há candidados para essa vaga'}
             {data.post.candidates ? data.post.candidates < 10 ? `0${data.post.candidates} ${candidate}` : `${data.post.candidates} ${candidate}` : null}
           </Badge>

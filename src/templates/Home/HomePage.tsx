@@ -1,4 +1,4 @@
-import { Avatar, Box, Flex, Grid, GridItem } from '@chakra-ui/react';
+import { Avatar, Box, Flex, Grid, GridItem, useMediaQuery } from '@chakra-ui/react';
 import NextLink from 'next/link';
 import { avatars, enterprises, posts } from '../../../data/initialData';
 import { PostCard } from '../../components/PostCard';
@@ -7,6 +7,8 @@ import { StoriesCarrousel } from '../../components/StoriesCarrousel';
 import { theme } from '../../styles/theme';
 
 export const HomePage = () => {
+
+  const [isLargerThan769] = useMediaQuery('(min-width: 769px)');
 
   return (
     <Box maxW={1000} margin="auto" position="relative" px={4}>
@@ -46,19 +48,21 @@ export const HomePage = () => {
           </GridItem>
 
         </Grid>
-        <Box
-          as="aside"
-          position="sticky"
-          top={90}
-          bg={theme.colors.brand.white}
-          h="100%"
-          w={{ sm: 200, md: 500 }}
-          borderRadius={10}
-          boxShadow="xl"
-          p={6}
-        >
-          <Sidebar enterprises={enterprises} />
-        </Box>
+        {isLargerThan769 &&
+          <Box
+            as="aside"
+            position="sticky"
+            top={90}
+            bg={theme.colors.brand.white}
+            h="100%"
+            w={{ sm: 200, md: 500 }}
+            borderRadius={10}
+            boxShadow="xl"
+            p={6}
+          >
+            <Sidebar enterprises={enterprises} />
+          </Box>
+        }
       </Flex>
     </Box>
   );

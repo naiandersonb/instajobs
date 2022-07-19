@@ -115,7 +115,7 @@ export const Navbar = () => {
               <Avatar
                 name="Dan Abrahmov"
                 src="https://bit.ly/dan-abramov"
-                size={isLargerThan768 ? 'sm' : 'md'}
+                size={'sm'}
               />
             </MenuButton>
             <MenuList
